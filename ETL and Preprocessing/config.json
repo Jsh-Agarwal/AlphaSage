@@ -1,0 +1,37 @@
+{
+    "api_keys": {
+        "alpha_vantage": null,
+        "finnhub": null,
+        "iex_cloud": null,
+        "intrinio": null,
+        "groq": null
+    },
+    "neo4j": {
+        "uri": "bolt://localhost:7687",
+        "user": "neo4j",
+        "password": "neo4j"
+    },
+    "data_sources": {
+        "sec_filings": true,
+        "nse_data": true,
+        "bse_data": true,
+        "yahoo_finance": true,
+        "screener_in": true,
+        "money_control": true,
+        "trendlyne": true,
+        "news": true
+    },
+    "scraping": {
+        "user_agent": "Financial Research Assistant/1.0",
+        "request_timeout": 30,
+        "chrome_driver_path": null,
+        "download_path": "./downloads"
+    },
+    "processing": {
+        "chunk_size": 1000,
+        "chunk_overlap": 200,
+        "max_pdf_size_mb": 50,
+        "ocr_enabled": true,
+        "max_threads": 5
+    }
+}

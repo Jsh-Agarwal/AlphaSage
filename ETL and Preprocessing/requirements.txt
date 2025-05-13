@@ -1,0 +1,70 @@
+# Core dependencies
+neo4j==5.14.0
+yfinance==0.2.36
+pandas==2.1.0
+numpy==1.24.0
+
+# Machine Learning and NLP
+torch>=2.0.0
+transformers==4.36.0
+sentence-transformers>=2.2.0
+spacy>=3.0.0
+scikit-learn>=1.0.0
+textblob>=0.15.3
+gensim>=4.3.0
+
+# Web scraping and parsing
+beautifulsoup4==4.12.0
+selenium==4.16.0
+selenium-wire>=5.1.0
+webdriver-manager>=3.8.0
+googlenews==1.6.11
+feedparser>=6.0.0
+
+# File processing
+PyPDF2>=3.0.0
+pdf2image>=1.16.3
+pytesseract>=0.3.10
+Pillow==10.0.0
+python-docx>=0.8.11
+pdfplumber>=0.10.0
+
+# Database and APIs
+edgar>=2.4.0
+nselib>=1.0.9
+pymongo>=4.3.0  # For caching and document storage
+redis>=4.5.0    # For caching frequent queries
+
+# Visualization
+matplotlib>=3.8.2
+seaborn>=0.13.0
+networkx>=3.2.1
+plotly>=5.18.0
+pyvis>=0.3.2    # For interactive network visualization
+dash>=2.9.0     # For creating dashboards
+
+# Utilities
+python-dotenv==1.0.0
+requests==2.31.0
+python-dateutil>=2.8.2
+tqdm>=4.65.0
+chromedriver-autoinstaller>=0.6.0
+nltk==3.8.1
+regex>=2023.0.0
+joblib>=1.2.0   # For parallel processing
+tenacity>=8.2.0 # For retry logic
+
+# Testing
+pytest>=7.0.0
+pytest-xdist>=3.3.0
+pytest-asyncio>=0.21.0
+pytest-cov>=4.1.0
+pytest-html>=4.1.0
+pytest-lazy-fixture>=0.6.3
+pytest-profiling>=1.7.0
+pytest-timeout>=2.1.0
+pytest-integration-mark>=0.2.0
+
+# Note: After installing requirements, run the following commands:
+# python -m spacy download en_core_web_sm
+# python -m nltk.downloader punkt vader_lexicon averaged_perceptron_tagger

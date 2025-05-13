@@ -1,0 +1,62 @@
+{
+    "Technology": [
+        "AAPL",
+        "MSFT",
+        "GOOGL",
+        "AMZN",
+        "META",
+        "NVDA",
+        "TSLA",
+        "INTC",
+        "AMD",
+        "CRM"
+    ],
+    "Healthcare": [
+        "JNJ",
+        "PFE",
+        "MRK",
+        "UNH",
+        "ABBV",
+        "LLY",
+        "TMO",
+        "ABT",
+        "DHR",
+        "BMY"
+    ],
+    "Financial": [
+        "JPM",
+        "BAC",
+        "WFC",
+        "C",
+        "GS",
+        "MS",
+        "BLK",
+        "AXP",
+        "V",
+        "MA"
+    ],
+    "Indian_Technology": [
+        "TCS.NS",
+        "INFY.NS",
+        "WIPRO.NS",
+        "HCLTECH.NS",
+        "TECHM.NS",
+        "LTI.NS",
+        "MINDTREE.NS",
+        "COFORGE.NS",
+        "PERSISTENT.NS",
+        "MPHASIS.NS"
+    ],
+    "Indian_Banking": [
+        "HDFCBANK.NS",
+        "SBIN.NS",
+        "ICICIBANK.NS",
+        "AXISBANK.NS",
+        "KOTAKBANK.NS",
+        "INDUSINDBK.NS",
+        "BANKBARODA.NS",
+        "PNB.NS",
+        "FEDERALBNK.NS",
+        "IDFCFIRSTB.NS"
+    ]
+}

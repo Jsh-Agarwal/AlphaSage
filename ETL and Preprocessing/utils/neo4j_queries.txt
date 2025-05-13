@@ -1,0 +1,79 @@
+# View all companies
+MATCH (c:Company)
+RETURN c.ticker, c.name, c.sector, c.exchange;
+
+# View companies by sector
+MATCH (c:Company)-[:BELONGS_TO]->(s:Sector)
+RETURN s.name as Sector, count(c) as CompanyCount
+ORDER BY CompanyCount DESC;
+
+# View recent stock prices for a company
+MATCH (c:Company {ticker: 'TCS.NS'})-[:HAS_PRICE]->(p:Price)
+RETURN p.date, p.open, p.high, p.low, p.close, p.volume
+ORDER BY p.date DESC
+LIMIT 10;
+
+# Compare key metrics across companies in a sector
+MATCH (c:Company)-[:BELONGS_TO]->(s:Sector)
+WHERE s.name = 'Technology'
+RETURN c.ticker, c.name, c.marketCap, c.trailingPE, c.priceToBook, c.profitMargins
+ORDER BY c.marketCap DESC;
+
+# View recent news sentiment
+MATCH (c:Company)-[:HAS_NEWS]->(n:News)
+WHERE c.ticker IN ['TCS.NS', 'INFY.NS', 'AAPL', 'MSFT']
+RETURN c.ticker, n.headline, n.date, n.sentiment
+ORDER BY n.date DESC
+LIMIT 20;
+
+# View sector-wise market cap distribution
+MATCH (c:Company)-[:BELONGS_TO]->(s:Sector)
+WITH s.name as Sector, sum(c.marketCap) as TotalMarketCap, count(c) as CompanyCount,
+     avg(c.marketCap) as AvgMarketCap
+RETURN Sector, TotalMarketCap, CompanyCount, AvgMarketCap
+ORDER BY TotalMarketCap DESC;
+
+# Find companies with highest growth rates
+MATCH (c:Company)
+WHERE c.revenueGrowth IS NOT NULL
+RETURN c.ticker, c.name, c.revenueGrowth, c.sector
+ORDER BY c.revenueGrowth DESC
+LIMIT 10;
+
+# Compare Indian vs US companies
+MATCH (c:Company)
+WHERE c.ticker CONTAINS '.NS' OR NOT c.ticker CONTAINS '.'
+WITH c.exchange as Exchange, count(c) as CompanyCount,
+     avg(c.marketCap) as AvgMarketCap,
+     avg(c.trailingPE) as AvgPE
+RETURN Exchange, CompanyCount, AvgMarketCap, AvgPE;
+
+# View technical indicators for a company
+MATCH (c:Company {ticker: 'AAPL'})-[:HAS_PRICE]->(p:Price)
+RETURN p.date, p.close, p.SMA20, p.SMA50, p.RSI, p.MACD
+ORDER BY p.date DESC
+LIMIT 10;
+
+# Find companies with strong buy signals
+MATCH (c:Company)-[:HAS_PRICE]->(p:Price)
+WHERE p.RSI < 30 AND p.MACD > p.MACD_signal
+AND p.date = date()
+RETURN c.ticker, c.name, p.RSI, p.MACD, p.MACD_signal;
+
+# View document analysis results
+MATCH (c:Company)-[:HAS_DOCUMENT]->(d:Document)
+RETURN c.ticker, d.type, d.title, d.sentiment_score
+ORDER BY d.date DESC
+LIMIT 20;
+
+# Find peer companies
+MATCH (c1:Company {ticker: 'TCS.NS'})-[:HAS_PEER]->(c2:Company)
+RETURN c2.ticker, c2.name, c2.sector, c2.marketCap
+ORDER BY c2.marketCap DESC;
+
+# View sector performance metrics
+MATCH (s:Sector)<-[:BELONGS_TO]-(c:Company)-[:HAS_PRICE]->(p:Price)
+WHERE p.date >= date() - duration('P30D')
+WITH s.name as Sector, avg(p.close) as AvgPrice, count(DISTINCT c) as CompanyCount
+RETURN Sector, AvgPrice, CompanyCount
+ORDER BY AvgPrice DESC; 

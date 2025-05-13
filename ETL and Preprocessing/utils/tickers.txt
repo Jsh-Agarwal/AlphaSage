@@ -1,0 +1,14 @@
+# Sample US technology sector tickers
+AAPL
+MSFT
+GOOGL
+AMZN
+META
+NVDA
+TSLA
+INTC
+AMD
+CRM
+
+# Sample Indian equities
+RELIANCE.NS
